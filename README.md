@@ -25,7 +25,9 @@ Before running the test, you must modify the device settings in **.detoxrc**
     
    ---
 **Build The Project** (3)
+
 Currently has two configurations
+
 1. android.debug
 2. ios.release
 
@@ -35,9 +37,15 @@ For Android Debug
 	    detox build --configuration android.debug
 	    DETOX_CONFIGURATION=android.debug npx cucumber-js
 
+**Before run the test on iOS
+
+		cd ios/
+		pod install
+		cd ..
+
 For iOS Release
 
-	    detox build --configuration android.release
+	    detox build --configuration ios.release
 	    DETOX_CONFIGURATION=ios.release npx cucumber-js
 
 **Alternatively you may use simple commands like this to execute it.**
@@ -55,3 +63,13 @@ For iOS Release
 
 
 -----
+
+If you have any issues with 
+
+    Unable to load script. Make sure you're either running a Metro server (run 'react-native start') or that your bundle 'index.android.bundle'
+
+You can run this command
+
+```
+adb reverse tcp:8081 tcp:8081
+```
